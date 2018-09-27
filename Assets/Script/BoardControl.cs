@@ -112,6 +112,8 @@ public class BoardControl : MonoBehaviour
         }else{
             c1.Revert();
             c2.Revert();
+            c1.Up();
+            c2.Up();
         }
     }
 }

@@ -17,6 +17,8 @@ public class TileControl : MonoBehaviour {
 
     public bool active;
 
+    public bool pressing;
+
 	// Use this for initialization
 	void Start () {
         if(type>0 && type<list.Count){
@@ -31,8 +33,13 @@ public class TileControl : MonoBehaviour {
 	}
 
     public void OnClick(){
-        Revert();
-        Invoke("Eat", 0.5f);
+        if (!pressing)
+        {
+            pressing = true;
+            Revert();
+            Invoke("Eat", 0.5f);
+        }
+       
     }
 
     void Eat(){
@@ -42,5 +49,10 @@ public class TileControl : MonoBehaviour {
     public void Revert(){
         active = !active;
         image.gameObject.SetActive(active);
+    }
+
+    public void Up()
+    {
+        pressing = false;
     }
 }
