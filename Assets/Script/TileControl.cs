@@ -19,9 +19,11 @@ public class TileControl : MonoBehaviour {
 
     public bool pressing;
 
+    public int barrier;
+
 	// Use this for initialization
 	void Start () {
-        if(type>0 && type<list.Count){
+        if(type>=0 && type<list.Count){
             GetComponent<Image>().sprite = list[type];
         }
         GetComponent<Button>().onClick.AddListener(OnClick);
@@ -54,5 +56,21 @@ public class TileControl : MonoBehaviour {
     public void Up()
     {
         pressing = false;
+    }
+
+    public void In()
+    {
+        barrier = 0;
+    }
+
+    public void Hide()
+    {
+        GetComponent<Image>().enabled = false;
+    }
+
+    public Point getPoint()
+    {
+        Debug.Log(x + "," + y);
+        return new Point(x, y);
     }
 }
